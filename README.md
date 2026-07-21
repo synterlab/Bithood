@@ -15,6 +15,12 @@ No sign-up. No credit card. No queues. Just a wallet, a transaction, and an SSH 
 [![Built in Public](https://img.shields.io/badge/Built-in%20Public-0a0a0a?style=flat-square&logo=github&logoColor=white)](https://github.com/synterlab/Bithood)
 [![Twitter](https://img.shields.io/badge/@bithoodxyz-000000?style=flat-square&logo=x&logoColor=white)](https://twitter.com/bithoodxyz)
 
+<br>
+
+<a href="https://orynth.dev/projects/bithood-gpu-compute" target="_blank" rel="noopener">
+  <img src="https://orynth.dev/api/badge/bithood-gpu-compute?theme=light&style=default" alt="Featured on Orynth" width="260" height="80" />
+</a>
+
 </div>
 
 ---
