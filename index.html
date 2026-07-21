@@ -895,6 +895,71 @@
       .nav-status, .nav-divider { display: none; }
     }
   </style>
+
+  <!-- SEO: additional signals -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="author" content="Bithood" />
+  <meta name="keywords" content="GPU compute, cloud GPU, Solana, H100, A100, RTX, on-chain computing, GPU rental, decentralized compute, blockchain GPU" />
+  <meta property="og:site_name" content="Bithood" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:site" content="@bithoodxyz" />
+  <meta name="twitter:creator" content="@bithoodxyz" />
+  <meta name="theme-color" content="#c8f547" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+
+  <!-- Structured Data: Organization + WebSite + WebPage + SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://bithood.xyz/#organization",
+        "name": "Bithood",
+        "url": "https://bithood.xyz",
+        "logo": { "@type": "ImageObject", "url": "https://bithood.xyz/og-image.png", "width": 1200, "height": 630 },
+        "description": "Decentralized GPU compute marketplace settled on Solana. Rent H100, A100, and RTX GPU nodes by the second.",
+        "sameAs": ["https://twitter.com/bithoodxyz"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://bithood.xyz/#website",
+        "url": "https://bithood.xyz",
+        "name": "Bithood",
+        "description": "GPU Compute. On-Chain.",
+        "publisher": { "@id": "https://bithood.xyz/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://bithood.xyz/#webpage",
+        "url": "https://bithood.xyz",
+        "name": "Bithood: GPU Compute. On-Chain.",
+        "description": "Rent GPU nodes by the second, settled on Solana. H100, A100, RTX from $0.62/hr. Connect your wallet and start computing in under 2 minutes.",
+        "isPartOf": { "@id": "https://bithood.xyz/#website" },
+        "about": { "@id": "https://bithood.xyz/#organization" },
+        "inLanguage": "en-US",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://bithood.xyz" }]
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Bithood GPU Exchange",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "https://bithood.xyz",
+        "description": "Decentralized GPU compute marketplace on Solana. Rent H100, A100 and RTX nodes by the second from $0.62/hr.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.62",
+          "priceCurrency": "USD",
+          "description": "GPU compute starting from $0.62/hr"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
