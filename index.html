@@ -105,6 +105,20 @@
       background: var(--green); flex-shrink: 0;
       animation: pulse-dot 2s infinite;
     }
+    /* Robinhood Chain badge variant */
+    .nav-status-rh {
+      color: #38bdf8; background: rgba(56,189,248,0.07);
+      border-color: rgba(56,189,248,0.18);
+    }
+    .nav-status-dot-rh {
+      background: #38bdf8;
+      box-shadow: 0 0 0 0 rgba(56,189,248,0.6);
+      animation: pulse-dot-rh 2s infinite;
+    }
+    @keyframes pulse-dot-rh {
+      0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(56,189,248,0.5); }
+      50%      { opacity: 0.8; box-shadow: 0 0 0 5px rgba(56,189,248,0); }
+    }
 
     .nav-links {
       display: flex; align-items: center; gap: 0;
@@ -729,9 +743,13 @@
       .step:last-child { border-bottom: none; }
       .why-grid { grid-template-columns: repeat(2,1fr); }
       .network-layout { grid-template-columns: 1fr; }
-      .nav-inner { grid-template-columns: 1fr auto; }
+      /* Nav collapses to logo-left / hamburger-right only */
+      .nav-inner { grid-template-columns: 1fr auto; gap: 0; padding: 0 1.25rem; }
       .nav-links { display: none; }
       #nav-toggle { display: flex; }
+      /* Hide CTA buttons — they move into the drawer */
+      .nav-right .btn-ghost,
+      .nav-right .btn-primary { display: none; }
     }
     @media (max-width: 680px) {
       .why-grid { grid-template-columns: 1fr; }
@@ -741,9 +759,18 @@
       .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
       .markets-header { flex-direction: column; align-items: flex-start; }
     }
+    @media (max-width: 520px) {
+      /* On small phones hide the RH Chain badge, keep Solana Devnet only */
+      .nav-status-rh, .nav-divider-rh { display: none; }
+      /* Further tighten left side */
+      .nav-left { gap: 0.5rem; }
+      .nav-inner { padding: 0 1rem; }
+    }
     @media (max-width: 460px) {
       .hero-actions { flex-direction: column; align-items: flex-start; }
       .btn-xl, .btn-xl-ghost { width: 100%; justify-content: center; }
+      /* Hide Solana Devnet badge on very small screens */
+      .nav-status, .nav-divider { display: none; }
     }
   </style>
 </head>
@@ -758,6 +785,8 @@
       <a href="#" class="nav-logo">BITHOOD<span>.</span></a>
       <span class="nav-divider"></span>
       <span class="nav-status"><span class="nav-status-dot"></span>Solana Devnet</span>
+      <span class="nav-divider nav-divider-rh"></span>
+      <span class="nav-status nav-status-rh"><span class="nav-status-dot nav-status-dot-rh"></span>Robinhood Chain</span>
     </div>
 
     <ul class="nav-links" id="nav-links">
@@ -788,6 +817,11 @@
   <a href="#docs"    onclick="closeNav()">Docs</a>
   <a href="#about"   onclick="closeNav()">About</a>
   <button onclick="closeNav();openSignIn();" style="background:none;border:none;cursor:pointer;font-size:0.88rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0.6rem 0;border-bottom:1px solid var(--border);text-align:left;width:100%;transition:color 0.2s;">Sign In</button>
+  <a href="#markets" onclick="closeNav()" style="margin-top:0.25rem;display:flex;align-items:center;justify-content:center;background:var(--green);color:#000;font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.75rem 1rem;border-radius:6px;text-decoration:none;border-bottom:none;">Browse Markets &rarr;</a>
+  <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;padding-top:0.5rem;">
+    <span class="nav-status" style="font-size:0.56rem;"><span class="nav-status-dot"></span>Solana Devnet</span>
+    <span class="nav-status nav-status-rh" style="font-size:0.56rem;"><span class="nav-status-dot nav-status-dot-rh"></span>Robinhood Chain</span>
+  </div>
 </div>
 
 <!-- SIGN IN OVERLAY -->
