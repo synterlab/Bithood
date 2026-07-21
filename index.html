@@ -62,7 +62,7 @@
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: fixed; top: 38px; left: 0; right: 0; z-index: 200;
       height: 62px;
       border-bottom: 1px solid var(--border);
       background: rgba(6,8,16,0.88);
@@ -105,6 +105,77 @@
       background: var(--green); flex-shrink: 0;
       animation: pulse-dot 2s infinite;
     }
+
+    /* ── NETWORK BANNER ── */
+    .network-banner {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      height: 38px;
+      background: linear-gradient(90deg,
+        rgba(0,255,135,0.06) 0%,
+        rgba(56,189,248,0.06) 50%,
+        rgba(0,255,135,0.06) 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex; align-items: center; justify-content: center; gap: 0;
+      overflow: hidden;
+    }
+    .network-banner::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%, var(--green) 30%, #38bdf8 50%, var(--green) 70%, transparent 100%);
+      opacity: 0.35;
+    }
+    .nb-inner {
+      display: flex; align-items: center; gap: 1.25rem;
+      max-width: 1180px; width: 100%; padding: 0 2rem;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .nb-label {
+      font-family: var(--mono); font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); flex-shrink: 0;
+    }
+    .nb-sep { width: 1px; height: 14px; background: var(--border); flex-shrink: 0; }
+    .nb-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-family: var(--mono); font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 9px 3px 7px; border-radius: 100px;
+      white-space: nowrap;
+    }
+    .nb-badge-sol {
+      color: var(--green); background: rgba(0,255,135,0.08);
+      border: 1px solid rgba(0,255,135,0.2);
+    }
+    .nb-badge-rh {
+      color: #38bdf8; background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.2);
+    }
+    .nb-dot {
+      width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0;
+      animation: pulse-dot 2s infinite;
+    }
+    .nb-dot-sol { background: var(--green); }
+    .nb-dot-rh  { background: #38bdf8; animation: pulse-dot-rh 2s infinite; }
+    .nb-wallet-btn {
+      font-family: var(--mono); font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #38bdf8; background: rgba(56,189,248,0.09);
+      border: 1px solid rgba(56,189,248,0.22); border-radius: 100px;
+      padding: 3px 10px; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, border-color 0.2s; flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .nb-wallet-btn:hover {
+      background: rgba(56,189,248,0.16); border-color: rgba(56,189,248,0.4);
+    }
+    @media (max-width: 480px) {
+      .nb-label, .nb-sep { display: none; }
+      .nb-badge { font-size: 0.56rem; }
+    }
+
     /* Robinhood Chain badge variant */
     .nav-status-rh {
       color: #38bdf8; background: rgba(56,189,248,0.07);
@@ -164,7 +235,7 @@
     /* mobile drawer */
     #nav-drawer {
       display: none;
-      position: fixed; top: 62px; left: 0; right: 0; z-index: 190;
+      position: fixed; top: 100px; left: 0; right: 0; z-index: 190;
       background: rgba(6,8,16,0.97);
       border-bottom: 1px solid var(--border);
       padding: 1.25rem 1.5rem 1.5rem;
@@ -252,7 +323,7 @@
     #hero {
       position: relative; z-index: 1;
       min-height: 100svh; display: flex; align-items: center;
-      padding-top: 62px; overflow: hidden;
+      padding-top: 100px; overflow: hidden;
     }
     .hero-inner {
       max-width: 1180px; margin: 0 auto; padding: 3rem 1.5rem;
@@ -776,6 +847,25 @@
 </head>
 <body>
 
+<!-- NETWORK STATUS BANNER -->
+<div class="network-banner" role="banner" aria-label="Network status">
+  <div class="nb-inner">
+    <span class="nb-label">Live on</span>
+    <span class="nb-sep"></span>
+    <span class="nb-badge nb-badge-sol">
+      <span class="nb-dot nb-dot-sol"></span>
+      Solana Devnet
+    </span>
+    <span class="nb-sep"></span>
+    <span class="nb-badge nb-badge-rh">
+      <span class="nb-dot nb-dot-rh"></span>
+      Robinhood Testnet
+    </span>
+    <span class="nb-sep"></span>
+    <button class="nb-wallet-btn" onclick="openSignIn()">Connect Wallet</button>
+  </div>
+</div>
+
 <canvas id="gpu-canvas"></canvas>
 
 <!-- NAV -->
@@ -837,7 +927,7 @@
       <div id="wallet-grid-wrap">
         <div class="wallet-grid" id="wallet-grid"></div>
         <div class="signin-divider">New to Solana?</div>
-        <p class="signin-note">Download <a href="https://phantom.app" target="_blank" rel="noopener">Phantom</a> or <a href="https://www.backpack.app" target="_blank" rel="noopener">Backpack</a> to get started. Bithood never stores your keys or requests signatures outside of sessions.</p>
+        <p class="signin-note">Solana: <a href="https://phantom.app" target="_blank" rel="noopener">Phantom</a> or <a href="https://www.backpack.app" target="_blank" rel="noopener">Backpack</a>. Robinhood Testnet: any EIP-1193 wallet (MetaMask, Coinbase) or <a href="https://robinhood.com/wallet" target="_blank" rel="noopener">Robinhood Wallet</a>. Bithood never stores your keys.</p>
       </div>
     </div>
   </div>
@@ -1933,6 +2023,48 @@ function closeNav() {
         return accounts[0];
       },
       install: 'https://metamask.io',
+    },
+    {
+      id: 'robinhood',
+      name: 'Robinhood Wallet',
+      chains: 'Robinhood Testnet · EVM',
+      emoji: '🏹',
+      detect: () => {
+        /* Robinhood Connect injects window.robinhood or a standard EIP-1193 provider */
+        if (window.robinhood) return window.robinhood;
+        /* Fallback: any EIP-1193 wallet can connect to Robinhood Testnet */
+        if (window.ethereum) return window.ethereum;
+        return null;
+      },
+      connect: async () => {
+        const provider = window.robinhood || window.ethereum;
+        /* Request accounts */
+        const accounts = await provider.request({ method: 'eth_requestAccounts' });
+        const address = accounts[0];
+        /* Switch to / add Robinhood Testnet (chain ID 0x15F902F = 23005711) */
+        try {
+          await provider.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0x15F902F' }],
+          });
+        } catch (switchErr) {
+          /* Chain not yet added — add it */
+          if (switchErr.code === 4902 || switchErr.code === -32603) {
+            await provider.request({
+              method: 'wallet_addEthereumChain',
+              params: [{
+                chainId: '0x15F902F',
+                chainName: 'Robinhood Testnet',
+                nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+                rpcUrls: ['https://testnet.rpc.robinhood.com'],
+                blockExplorerUrls: ['https://testnet.explorer.robinhood.com'],
+              }],
+            });
+          }
+        }
+        return address;
+      },
+      install: 'https://robinhood.com/wallet',
     },
     {
       id: 'okx',
