@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bithood — GPU Compute. On-Chain.</title>
-  <meta name="description" content="Rent GPU nodes by the second, settled on Solana. H100, A100, RTX — from $0.62/hr. Connect your wallet and start computing in under 2 minutes." />
+  <title>Bithood: GPU Compute. On-Chain.</title>
+  <meta name="description" content="Rent GPU nodes by the second, settled on Solana. H100, A100, RTX from $0.62/hr. Connect your wallet and start computing in under 2 minutes." />
 
   <!-- OG / Social -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bithood.xyz" />
-  <meta property="og:title" content="Bithood — GPU Compute. On-Chain." />
+  <meta property="og:title" content="Bithood: GPU Compute. On-Chain." />
   <meta property="og:description" content="Rent H100, A100 &amp; RTX nodes by the second. Settled on Solana. No minimums, no contracts." />
   <meta property="og:image" content="https://bithood.xyz/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Bithood — GPU Compute. On-Chain." />
+  <meta name="twitter:title" content="Bithood: GPU Compute. On-Chain." />
   <meta name="twitter:description" content="Rent H100, A100 &amp; RTX nodes by the second. Settled on Solana." />
   <meta name="twitter:image" content="https://bithood.xyz/og-image.png" />
 
@@ -63,31 +63,59 @@
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: 58px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 1.5rem;
+      height: 62px;
       border-bottom: 1px solid var(--border);
-      background: rgba(6,8,16,0.82);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(6,8,16,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    nav::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--green) 35%, rgba(0,255,135,0.4) 65%, transparent 100%);
+      opacity: 0.45;
+    }
+    .nav-inner {
+      max-width: 1180px; margin: 0 auto; padding: 0 1.5rem;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
+      display: flex; align-items: center; gap: 0.55rem;
       font-size: 1rem; font-weight: 800; letter-spacing: -0.02em;
       color: #fff; text-decoration: none; flex-shrink: 0;
     }
     .nav-logo span { color: var(--green); }
+    .nav-status {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-family: var(--mono); font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--green); background: rgba(0,255,135,0.08);
+      border: 1px solid rgba(0,255,135,0.18); border-radius: 100px;
+      padding: 2px 8px 2px 6px; flex-shrink: 0;
+    }
+    .nav-status-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+      animation: pulse-dot 2s infinite;
+    }
 
     .nav-links {
-      display: flex; align-items: center; gap: 1.75rem;
+      display: flex; align-items: center; gap: 0.25rem;
       list-style: none;
     }
     .nav-links a {
-      font-size: 0.74rem; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
+      font-size: 0.73rem; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
       color: var(--muted); text-decoration: none;
-      transition: color 0.2s;
+      padding: 0.3rem 0.65rem; border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+      position: relative;
     }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+    .nav-links a.active { color: #fff; }
+    .nav-links a.active::after {
+      content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%);
+      width: 16px; height: 1.5px; background: var(--green); border-radius: 2px;
+    }
 
     .nav-right { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
 
@@ -111,7 +139,7 @@
     /* mobile drawer */
     #nav-drawer {
       display: none;
-      position: fixed; top: 58px; left: 0; right: 0; z-index: 190;
+      position: fixed; top: 62px; left: 0; right: 0; z-index: 190;
       background: rgba(6,8,16,0.97);
       border-bottom: 1px solid var(--border);
       padding: 1.25rem 1.5rem 1.5rem;
@@ -199,7 +227,7 @@
     #hero {
       position: relative; z-index: 1;
       min-height: 100svh; display: flex; align-items: center;
-      padding-top: 58px; overflow: hidden;
+      padding-top: 62px; overflow: hidden;
     }
     .hero-inner {
       max-width: 1180px; margin: 0 auto; padding: 3rem 1.5rem;
@@ -403,20 +431,96 @@
     .cta-inner p { font-size: 1rem; line-height: 1.7; color: var(--muted); margin-bottom: 2.25rem; }
     .cta-actions { display: flex; align-items: center; justify-content: center; gap: 0.85rem; flex-wrap: wrap; }
 
+    /* ── ABOUT ── */
+    #about { padding: 5.5rem 0; border-top: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .about-facts { display: flex; flex-direction: column; gap: 1.5rem; }
+    .about-fact {
+      padding: 1.5rem; background: var(--bg2);
+      border: 1px solid var(--border); border-radius: 8px;
+      transition: border-color 0.2s;
+    }
+    .about-fact:hover { border-color: rgba(0,255,135,0.25); }
+    .about-fact-label { font-family: var(--mono); font-size: 0.63rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 0.4rem; }
+    .about-fact-val { font-size: 0.9rem; line-height: 1.6; color: var(--text); }
+    .about-text p { font-size: 0.95rem; line-height: 1.75; color: var(--muted); margin-bottom: 1.25rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+
+    /* ── DOCS ── */
+    #docs { padding: 5.5rem 0; border-top: 1px solid var(--border); }
+    .docs-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--border); margin-top: 3rem; }
+    .doc-block {
+      background: var(--bg2); padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: background 0.2s;
+    }
+    .doc-block:hover { background: rgba(0,255,135,0.025); }
+    .doc-block-label { font-family: var(--mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; }
+    .doc-block h3 { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
+    .doc-block p { font-size: 0.85rem; line-height: 1.65; color: var(--muted); margin-bottom: 1.1rem; }
+    .doc-code {
+      font-family: var(--mono); font-size: 0.76rem; line-height: 1.7;
+      background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px; padding: 0.9rem 1rem; color: var(--text);
+      overflow-x: auto;
+    }
+    .doc-code .kw { color: var(--green); }
+    .doc-code .str { color: #fb923c; }
+    .doc-code .cm { color: #3a4255; }
+    .doc-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; font-weight: 600; color: var(--green); text-decoration: none; transition: opacity 0.2s; }
+    .doc-link:hover { opacity: 0.75; }
+    .doc-link svg { flex-shrink: 0; }
+
     /* ── FOOTER ── */
     footer {
       position: relative; z-index: 1;
       border-top: 1px solid var(--border);
-      padding: 1.75rem 1.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 0.85rem;
+      background: var(--bg2);
     }
-    .footer-logo { font-size: 0.88rem; font-weight: 800; letter-spacing: -0.02em; color: #fff; text-decoration: none; }
+    .footer-main {
+      max-width: 1180px; margin: 0 auto; padding: 3.5rem 1.5rem 2.5rem;
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand { display: flex; flex-direction: column; gap: 0; }
+    .footer-logo { font-size: 0.95rem; font-weight: 800; letter-spacing: -0.02em; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 0.75rem; }
     .footer-logo span { color: var(--green); }
-    .footer-links { display: flex; gap: 1.25rem; list-style: none; flex-wrap: wrap; }
-    .footer-links a { font-size: 0.76rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--text); }
+    .footer-tagline { font-size: 0.82rem; line-height: 1.65; color: var(--muted); margin-bottom: 1.5rem; max-width: 240px; }
+    .footer-socials { display: flex; gap: 0.6rem; }
+    .footer-social {
+      width: 32px; height: 32px; border-radius: 6px;
+      border: 1px solid var(--border); background: var(--surface);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); text-decoration: none; font-size: 0.75rem; font-weight: 700;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .footer-social:hover { border-color: rgba(0,255,135,0.3); color: var(--green); background: rgba(0,255,135,0.06); }
+    .footer-col-title { font-family: var(--mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin-bottom: 1.1rem; }
+    .footer-col-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col-links a:hover { color: var(--text); }
+    .footer-bottom {
+      max-width: 1180px; margin: 0 auto; padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.75rem;
+    }
     .footer-copy { font-size: 0.72rem; color: var(--muted); }
+    .footer-legal { display: flex; gap: 1.25rem; list-style: none; }
+    .footer-legal a { font-size: 0.72rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--text); }
+
+    @media (max-width: 900px) {
+      .footer-main { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 540px) {
+      .footer-main { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .about-grid { grid-template-columns: 1fr; }
+      .docs-grid { grid-template-columns: 1fr; }
+    }
 
     /* ── ANIMATIONS ── */
     @keyframes fade-up { to { opacity: 1; transform: translateY(0); } }
@@ -463,22 +567,27 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">BITHOOD<span>.</span></a>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">BITHOOD<span>.</span>
+      <span class="nav-status"><span class="nav-status-dot"></span>Live</span>
+    </a>
 
-  <ul class="nav-links">
-    <li><a href="#markets">Markets</a></li>
-    <li><a href="#how">How it works</a></li>
-    <li><a href="#network">Network</a></li>
-    <li><a href="#why">Why Bithood</a></li>
-    <li><a href="#cta">Docs</a></li>
-  </ul>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#markets">Markets</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#network">Network</a></li>
+      <li><a href="#why">Why Bithood</a></li>
+      <li><a href="#docs">Docs</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
 
-  <div class="nav-right">
-    <a href="#" class="btn-ghost">Login</a>
-    <a href="#markets" class="btn-primary">Browse Markets</a>
-    <button id="nav-toggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <a href="#markets" class="btn-ghost">Sign In</a>
+      <a href="#markets" class="btn-primary">Browse Markets</a>
+      <button id="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -488,8 +597,9 @@
   <a href="#how"     onclick="closeNav()">How it works</a>
   <a href="#network" onclick="closeNav()">Network</a>
   <a href="#why"     onclick="closeNav()">Why Bithood</a>
-  <a href="#cta"     onclick="closeNav()">Docs</a>
-  <a href="#"        onclick="closeNav()">Login</a>
+  <a href="#docs"    onclick="closeNav()">Docs</a>
+  <a href="#about"   onclick="closeNav()">About</a>
+  <a href="#markets" onclick="closeNav()">Sign In</a>
 </div>
 
 <!-- HERO -->
@@ -528,7 +638,7 @@
         <div class="section-label">Live Compute Feed</div>
         <h2 class="section-title">Pick Your GPU</h2>
       </div>
-      <a href="#" class="btn-ghost">View All &rarr;</a>
+      <a href="#docs" class="btn-ghost">View Docs &rarr;</a>
     </div>
     <div class="gpu-grid reveal-el" id="gpu-grid"></div>
   </div>
@@ -601,7 +711,7 @@
       <div class="why-item">
         <span class="why-icon">&#128202;</span>
         <div class="why-title">Transparent Market</div>
-        <p class="why-text">Live availability, per-GPU pricing, and regional capacity — visible to everyone, always. No dark pools.</p>
+        <p class="why-text">Live availability, per-GPU pricing, and regional capacity. Visible to everyone, always. No dark pools.</p>
       </div>
     </div>
   </div>
@@ -662,7 +772,95 @@
       <p>Connect your wallet. Pick your GPU. SSH in. No sign-up, no credit card, no waiting.</p>
       <div class="cta-actions">
         <a href="#markets" class="btn-xl">Browse Markets</a>
-        <a href="#" class="btn-xl-ghost">Read the Docs</a>
+        <a href="#docs" class="btn-xl-ghost">Read the Docs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="reveal-el">
+      <div class="section-label">The Company</div>
+      <h2 class="section-title">Built by compute traders,<br>not cloud salespeople.</h2>
+    </div>
+    <div class="about-grid reveal-el">
+      <div class="about-text">
+        <p>Bithood started in late 2025 when a group of ML researchers kept running into the same problem: big cloud providers price GPU capacity like it's real estate in 2007. Locked-in contracts, 30-day minimums, and pricing that changes only when they feel like it.</p>
+        <p>We built the other thing. A spot market where GPU owners list idle capacity and buyers rent it by the second, with payment settled on Solana so neither side needs to trust a middleman. Supply meets demand. Price finds itself. Compute flows to whoever needs it most.</p>
+        <p>Today Bithood connects <strong>1,200+ GPUs</strong> across 12 regions on 4 continents. We are self-funded, small, and entirely focused on making GPU compute cheaper for people who actually use it to build things.</p>
+        <p>No vendor deals. No upsell. No dark pools. Just a transparent market and an SSH credential that lands in your terminal in under 90 seconds.</p>
+      </div>
+      <div class="about-facts">
+        <div class="about-fact">
+          <div class="about-fact-label">Founded</div>
+          <div class="about-fact-val">Q4 2025, San Francisco</div>
+        </div>
+        <div class="about-fact">
+          <div class="about-fact-label">Settlement Layer</div>
+          <div class="about-fact-val">Solana mainnet. Sub-second finality, $0.00025/tx.</div>
+        </div>
+        <div class="about-fact">
+          <div class="about-fact-label">Hardware Policy</div>
+          <div class="about-fact-val">Bare metal only. No virtualization, no shared memory namespaces, no noisy neighbors.</div>
+        </div>
+        <div class="about-fact">
+          <div class="about-fact-label">Business Model</div>
+          <div class="about-fact-val">5% protocol fee on each completed session, split between node operators and the treasury.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCS -->
+<section id="docs">
+  <div class="container">
+    <div class="reveal-el">
+      <div class="section-label">Quick Start</div>
+      <h2 class="section-title">Zero to running in three commands.</h2>
+      <p class="section-sub">Everything is CLI-first. The dashboard is optional sugar on top.</p>
+    </div>
+    <div class="docs-grid reveal-el">
+      <div class="doc-block">
+        <div class="doc-block-label">01 / Install CLI</div>
+        <h3>Get the Bithood CLI</h3>
+        <p>The CLI handles wallet signing, session management, and SSH key injection. It runs anywhere Node 18+ is available.</p>
+        <div class="doc-code"><span class="cm"># install globally</span>
+<span class="kw">npm</span> install -g @bithood/cli
+
+<span class="cm"># verify</span>
+<span class="kw">bithood</span> --version</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-block-label">02 / Connect Wallet</div>
+        <h3>Link a Solana wallet</h3>
+        <p>Export your keypair from Phantom or Backpack. The CLI stores it locally and signs transactions on your behalf during a session.</p>
+        <div class="doc-code"><span class="kw">bithood</span> auth --keypair <span class="str">~/.config/solana/id.json</span>
+
+<span class="cm"># or use ledger hardware wallet</span>
+<span class="kw">bithood</span> auth --ledger</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-block-label">03 / Rent a GPU</div>
+        <h3>Browse and reserve capacity</h3>
+        <p>Filter by tier, region, and price. Reserve sends a single on-chain transaction. SSH credentials are returned within 90 seconds.</p>
+        <div class="doc-code"><span class="cm"># list available H100s under $4/hr</span>
+<span class="kw">bithood</span> markets --tier h100 --max-price 4
+
+<span class="cm"># reserve and get SSH creds</span>
+<span class="kw">bithood</span> rent <span class="str">h100-sxm5-us-east-01</span></div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-block-label">04 / End Session</div>
+        <h3>Billing stops the second you disconnect</h3>
+        <p>Sessions are metered to the second on-chain. No orphaned instances, no surprise invoices. End a session at any time.</p>
+        <div class="doc-code"><span class="cm"># graceful shutdown (flushes checkpoints)</span>
+<span class="kw">bithood</span> end --session <span class="str">ses_3kLmXq</span>
+
+<span class="cm"># force-terminate immediately</span>
+<span class="kw">bithood</span> end --session <span class="str">ses_3kLmXq</span> --force</div>
       </div>
     </div>
   </div>
@@ -670,15 +868,52 @@
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">BITHOOD<span>.</span></a>
-  <ul class="footer-links">
-    <li><a href="#markets">Markets</a></li>
-    <li><a href="#">Docs</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Twitter</a></li>
-    <li><a href="#">Discord</a></li>
-  </ul>
-  <span class="footer-copy">&copy; 2026 Bithood. GPU Compute on Solana.</span>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">BITHOOD<span>.</span></a>
+      <p class="footer-tagline">GPU compute on Solana. Rent by the second, settle on-chain, own the keys.</p>
+      <div class="footer-socials">
+        <a href="https://twitter.com/bithoodxyz" target="_blank" rel="noopener" class="footer-social" aria-label="X / Twitter">X</a>
+        <a href="https://discord.gg/bithood" target="_blank" rel="noopener" class="footer-social" aria-label="Discord">DC</a>
+        <a href="https://github.com/synterlab" target="_blank" rel="noopener" class="footer-social" aria-label="GitHub">GH</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Product</div>
+      <ul class="footer-col-links">
+        <li><a href="#markets">Live Markets</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#network">Node Network</a></li>
+        <li><a href="#why">Why Bithood</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Developers</div>
+      <ul class="footer-col-links">
+        <li><a href="#docs">Quick Start</a></li>
+        <li><a href="#docs">CLI Reference</a></li>
+        <li><a href="#docs">API Docs</a></li>
+        <li><a href="https://github.com/synterlab" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-col-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="mailto:hello@bithood.xyz">Contact</a></li>
+        <li><a href="https://twitter.com/bithoodxyz" target="_blank" rel="noopener">Twitter / X</a></li>
+        <li><a href="https://discord.gg/bithood" target="_blank" rel="noopener">Discord</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Bithood. GPU Compute on Solana.</span>
+    <ul class="footer-legal">
+      <li><a href="#">Terms</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Status</a></li>
+    </ul>
+  </div>
 </footer>
 
 <script>
@@ -1151,6 +1386,168 @@ function closeNav() {
     });
   }
   draw();
+})();
+
+/* =========================================================
+   SCROLLSPY — highlight active nav link
+   ========================================================= */
+(function scrollSpy() {
+  const sections = ['markets','how','why','network','docs','about','cta'].map(id => document.getElementById(id)).filter(Boolean);
+  const links = Array.from(document.querySelectorAll('#nav-links a'));
+  const sectionMap = {};
+  links.forEach(a => {
+    const id = a.getAttribute('href').replace('#','');
+    sectionMap[id] = a;
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const id = e.target.id;
+      const link = sectionMap[id];
+      if (!link) return;
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(s => obs.observe(s));
+})();
+
+/* =========================================================
+   STAGGER — why-grid + steps-grid children
+   ========================================================= */
+(function staggerChildren() {
+  if (!('IntersectionObserver' in window)) return;
+
+  function addStagger(parentSelector, childSelector) {
+    const parent = document.querySelector(parentSelector);
+    if (!parent) return;
+    const children = Array.from(parent.querySelectorAll(childSelector));
+    children.forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = `opacity 0.55s ${i * 0.08}s ease, transform 0.55s ${i * 0.08}s ease`;
+    });
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        children.forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+        obs.disconnect();
+      });
+    }, { threshold: 0.08 });
+    obs.observe(parent);
+  }
+
+  addStagger('.why-grid', '.why-item');
+  addStagger('.steps-grid', '.step');
+  addStagger('.docs-grid', '.doc-block');
+  addStagger('.about-facts', '.about-fact');
+})();
+
+/* =========================================================
+   HERO PARALLAX — chip canvas follows mouse gently
+   ========================================================= */
+(function heroParallax() {
+  const visual = document.querySelector('.hero-visual');
+  if (!visual) return;
+  let tx = 0, ty = 0, cx = 0, cy = 0;
+
+  document.addEventListener('mousemove', e => {
+    const nx = (e.clientX / window.innerWidth  - 0.5) * 2;
+    const ny = (e.clientY / window.innerHeight - 0.5) * 2;
+    tx = nx * 10; ty = ny * 8;
+  }, { passive: true });
+
+  (function raf() {
+    requestAnimationFrame(raf);
+    cx += (tx - cx) * 0.06;
+    cy += (ty - cy) * 0.06;
+    visual.style.transform = `translate(${cx}px, ${cy}px)`;
+  })();
+})();
+
+/* =========================================================
+   BACKGROUND PARTICLES — add proximity connection lines
+   ========================================================= */
+(function particleConnections() {
+  const canvas = document.getElementById('gpu-canvas');
+  if (!canvas) return;
+  // We patch the existing frame loop by adding a 2D overlay canvas
+  const overlay = document.createElement('canvas');
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:0;pointer-events:none;';
+  document.body.insertBefore(overlay, canvas.nextSibling);
+  const ctx2 = overlay.getContext('2d');
+
+  const MAX_DIST = 120;
+  const CONN_NODES = 55;
+  const nodes = [];
+  for (let i = 0; i < CONN_NODES; i++) {
+    nodes.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.28,
+      vy: (Math.random() - 0.5) * 0.28,
+    });
+  }
+
+  function resize() {
+    overlay.width  = window.innerWidth;
+    overlay.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  function frame() {
+    requestAnimationFrame(frame);
+    const W = overlay.width, H = overlay.height;
+    ctx2.clearRect(0, 0, W, H);
+
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
+      if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
+    });
+
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const d  = Math.sqrt(dx*dx + dy*dy);
+        if (d < MAX_DIST) {
+          const a = (1 - d / MAX_DIST) * 0.045;
+          ctx2.beginPath();
+          ctx2.moveTo(nodes[i].x, nodes[i].y);
+          ctx2.lineTo(nodes[j].x, nodes[j].y);
+          ctx2.strokeStyle = `rgba(0,255,135,${a})`;
+          ctx2.lineWidth = 0.6;
+          ctx2.stroke();
+        }
+      }
+    }
+  }
+  frame();
+})();
+
+/* =========================================================
+   NAV SCROLL STYLE — add shadow + more opacity on scroll
+   ========================================================= */
+(function navScroll() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      nav.style.background = 'rgba(6,8,16,0.97)';
+      nav.style.boxShadow  = '0 1px 0 rgba(0,255,135,0.06), 0 4px 24px rgba(0,0,0,0.4)';
+    } else {
+      nav.style.background = 'rgba(6,8,16,0.88)';
+      nav.style.boxShadow  = 'none';
+    }
+  }, { passive: true });
 })();
 </script>
 </body>
