@@ -75,22 +75,30 @@
       opacity: 0.45;
     }
     .nav-inner {
-      max-width: 1180px; margin: 0 auto; padding: 0 1.5rem;
-      height: 100%; display: flex; align-items: center; justify-content: space-between;
+      max-width: 1180px; margin: 0 auto; padding: 0 2rem;
+      height: 100%; display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center; gap: 1rem;
+    }
+    .nav-left {
+      display: flex; align-items: center; gap: 0.75rem;
     }
     .nav-logo {
-      display: flex; align-items: center; gap: 0.55rem;
-      font-size: 1rem; font-weight: 800; letter-spacing: -0.02em;
-      color: #fff; text-decoration: none; flex-shrink: 0;
+      font-size: 0.95rem; font-weight: 800; letter-spacing: 0.02em;
+      color: #fff; text-decoration: none; white-space: nowrap;
+      flex-shrink: 0;
     }
     .nav-logo span { color: var(--green); }
+    .nav-divider {
+      width: 1px; height: 16px; background: var(--border); flex-shrink: 0;
+    }
     .nav-status {
       display: inline-flex; align-items: center; gap: 0.35rem;
       font-family: var(--mono); font-size: 0.58rem; font-weight: 700;
       letter-spacing: 0.09em; text-transform: uppercase;
-      color: var(--green); background: rgba(0,255,135,0.08);
-      border: 1px solid rgba(0,255,135,0.18); border-radius: 100px;
-      padding: 2px 8px 2px 6px; flex-shrink: 0;
+      color: var(--green); background: rgba(0,255,135,0.07);
+      border: 1px solid rgba(0,255,135,0.15); border-radius: 100px;
+      padding: 2px 8px 2px 6px; flex-shrink: 0; white-space: nowrap;
     }
     .nav-status-dot {
       width: 5px; height: 5px; border-radius: 50%;
@@ -99,25 +107,28 @@
     }
 
     .nav-links {
-      display: flex; align-items: center; gap: 0.25rem;
-      list-style: none;
+      display: flex; align-items: center; gap: 0;
+      list-style: none; justify-content: center;
     }
     .nav-links a {
-      font-size: 0.73rem; font-weight: 600;
-      letter-spacing: 0.07em; text-transform: uppercase;
+      font-size: 0.71rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
       color: var(--muted); text-decoration: none;
-      padding: 0.3rem 0.65rem; border-radius: 4px;
-      transition: color 0.2s, background 0.2s;
-      position: relative;
+      padding: 0.35rem 0.7rem; border-radius: 4px;
+      transition: color 0.18s, background 0.18s;
+      position: relative; white-space: nowrap;
     }
     .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
     .nav-links a.active { color: #fff; }
     .nav-links a.active::after {
-      content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%);
-      width: 16px; height: 1.5px; background: var(--green); border-radius: 2px;
+      content: ''; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%);
+      width: 14px; height: 1.5px; background: var(--green); border-radius: 2px;
     }
 
-    .nav-right { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+    .nav-right {
+      display: flex; align-items: center; gap: 0.55rem;
+      justify-content: flex-end; flex-shrink: 0;
+    }
 
     /* hamburger */
     #nav-toggle {
@@ -544,6 +555,7 @@
       .step:last-child { border-bottom: none; }
       .why-grid { grid-template-columns: repeat(2,1fr); }
       .network-layout { grid-template-columns: 1fr; }
+      .nav-inner { grid-template-columns: 1fr auto; }
       .nav-links { display: none; }
       #nav-toggle { display: flex; }
     }
@@ -568,15 +580,17 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">BITHOOD<span>.</span>
+    <div class="nav-left">
+      <a href="#" class="nav-logo">BITHOOD<span>.</span></a>
+      <span class="nav-divider"></span>
       <span class="nav-status"><span class="nav-status-dot"></span>Live</span>
-    </a>
+    </div>
 
     <ul class="nav-links" id="nav-links">
       <li><a href="#markets">Markets</a></li>
       <li><a href="#how">How it works</a></li>
       <li><a href="#network">Network</a></li>
-      <li><a href="#why">Why Bithood</a></li>
+      <li><a href="#why">Why</a></li>
       <li><a href="#docs">Docs</a></li>
       <li><a href="#about">About</a></li>
     </ul>
@@ -782,20 +796,20 @@
 <section id="about">
   <div class="container">
     <div class="reveal-el">
-      <div class="section-label">The Company</div>
-      <h2 class="section-title">Built by compute traders,<br>not cloud salespeople.</h2>
+      <div class="section-label">The Builder</div>
+      <h2 class="section-title">One person, one idea,<br>built in public.</h2>
     </div>
     <div class="about-grid reveal-el">
       <div class="about-text">
-        <p>Bithood started in late 2025 when a group of ML researchers kept running into the same problem: big cloud providers price GPU capacity like it's real estate in 2007. Locked-in contracts, 30-day minimums, and pricing that changes only when they feel like it.</p>
-        <p>We built the other thing. A spot market where GPU owners list idle capacity and buyers rent it by the second, with payment settled on Solana so neither side needs to trust a middleman. Supply meets demand. Price finds itself. Compute flows to whoever needs it most.</p>
-        <p>Today Bithood connects <strong>1,200+ GPUs</strong> across 12 regions on 4 continents. We are self-funded, small, and entirely focused on making GPU compute cheaper for people who actually use it to build things.</p>
-        <p>No vendor deals. No upsell. No dark pools. Just a transparent market and an SSH credential that lands in your terminal in under 90 seconds.</p>
+        <p>Bithood is an indie project. One builder, one idea: GPU compute should work like a spot market, not a cloud subscription. The whole thing started in 2026 out of frustration with how expensive and slow it is to get a GPU when you actually need one.</p>
+        <p>The setup is simple: node operators list idle capacity, renters pick what they need, and Solana settles the payment on-chain the moment a session ends. No invoices, no credit card holds, no support ticket to get access. Just a wallet, a transaction, and an SSH key.</p>
+        <p>Right now Bithood connects <strong>1,200+ GPUs</strong> across 12 regions. It is still early. The market is live, the billing works, and new node operators are joining weekly. Everything else is being built in public, one commit at a time.</p>
+        <p>No team page. No funding announcement. Just working software and a transparent market that gets a little better every week.</p>
       </div>
       <div class="about-facts">
         <div class="about-fact">
-          <div class="about-fact-label">Founded</div>
-          <div class="about-fact-val">Q4 2025, San Francisco</div>
+          <div class="about-fact-label">Started</div>
+          <div class="about-fact-val">2026, indie build</div>
         </div>
         <div class="about-fact">
           <div class="about-fact-label">Settlement Layer</div>
@@ -806,8 +820,8 @@
           <div class="about-fact-val">Bare metal only. No virtualization, no shared memory namespaces, no noisy neighbors.</div>
         </div>
         <div class="about-fact">
-          <div class="about-fact-label">Business Model</div>
-          <div class="about-fact-val">5% protocol fee on each completed session, split between node operators and the treasury.</div>
+          <div class="about-fact-label">How it pays for itself</div>
+          <div class="about-fact-val">5% protocol fee on each completed session. Node operators keep the rest.</div>
         </div>
       </div>
     </div>
