@@ -6,11 +6,11 @@
 
 **GPU Compute. On-Chain.**
 
-Rent bare-metal H100, A100 & RTX nodes by the second — settled atomically on Solana.  
+Rent bare-metal H100, A100 & RTX nodes by the second — live on Solana Devnet & Robinhood Testnet.  
 No sign-up. No credit card. No queues. Just a wallet, a transaction, and an SSH key.
 
 [![Live](https://img.shields.io/badge/Live-bithood.xyz-c8f547?style=flat-square&logo=vercel&logoColor=black)](https://bithood.xyz)
-[![Solana](https://img.shields.io/badge/Solana-Mainnet-9945FF?style=flat-square&logo=solana&logoColor=white)](https://solana.com)
+[![Solana](https://img.shields.io/badge/Solana-Devnet-9945FF?style=flat-square&logo=solana&logoColor=white)](https://solana.com)
 [![License](https://img.shields.io/badge/License-MIT-c8f547?style=flat-square)](LICENSE)
 [![Built in Public](https://img.shields.io/badge/Built-in%20Public-0a0a0a?style=flat-square&logo=github&logoColor=white)](https://github.com/synterlab/Bithood)
 [![Twitter](https://img.shields.io/badge/@bithoodxyz-000000?style=flat-square&logo=x&logoColor=white)](https://twitter.com/bithoodxyz)
@@ -144,7 +144,7 @@ bithood end --session ses_3kLmXq --force
 
 Settlement is atomic and on-chain — Bithood never touches operator funds before a session completes.
 
-**Settlement Layer:** Solana Mainnet — sub-second finality at ~$0.00025/tx  
+**Settlement Layer:** Solana Devnet & Robinhood Testnet — sub-second finality at ~$0.00025/tx  
 **Hardware Policy:** Bare metal only — no virtualization, no shared memory namespaces, no noisy neighbors
 
 ---
@@ -154,7 +154,7 @@ Settlement is atomic and on-chain — Bithood never touches operator funds befor
 | Layer | Technology |
 |-------|-----------|
 | Frontend | Vanilla JS · HTML · CSS (static, Vite-built) |
-| Blockchain | Solana (primary) · Robinhood Chain (EVM) |
+| Blockchain | Solana Devnet · Robinhood Testnet (EVM) |
 | Wallets | Phantom · Backpack · Solflare · MetaMask |
 | Deployment | GitHub Pages · Custom domain (bithood.xyz) |
 | CLI | Node.js 18+ (`@bithood/cli`) |
@@ -212,7 +212,7 @@ To deploy changes, push to the `main` branch — GitHub Pages auto-deploys on co
 
 Bithood is an indie project — one builder, one idea, built in public.
 
-GPU compute should work like a spot market, not a cloud subscription. Node operators list idle capacity. Renters pick what they need. Solana settles on-chain the moment a session ends.
+GPU compute should work like a spot market, not a cloud subscription. Node operators list idle capacity. Renters pick what they need. Solana Devnet settles on-chain the moment a session ends.
 
 Right now Bithood connects **1,200+ GPUs across 12 regions**. The market is live, the billing works, and new node operators join weekly. Everything else is being built in public, one commit at a time.
 
@@ -234,6 +234,6 @@ No team page. No funding announcement. Just working software and a transparent m
 
 <div align="center">
 
-© 2026 Bithood · GPU Compute on Solana · [Terms](https://bithood.xyz/terms) · [Privacy](https://bithood.xyz/privacy) · [Status](https://bithood.xyz/status)
+© 2026 Bithood · GPU Compute on Solana Devnet & Robinhood Testnet · [Terms](https://bithood.xyz/terms) · [Privacy](https://bithood.xyz/privacy) · [Status](https://bithood.xyz/status)
 
 </div>
