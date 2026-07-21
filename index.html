@@ -947,7 +947,7 @@
       <div id="wallet-grid-wrap">
         <div class="wallet-grid" id="wallet-grid"></div>
         <div class="signin-divider">New to Solana?</div>
-        <p class="signin-note">Solana: <a href="https://phantom.app" target="_blank" rel="noopener">Phantom</a> or <a href="https://www.backpack.app" target="_blank" rel="noopener">Backpack</a>. Robinhood Testnet: any EIP-1193 wallet (MetaMask, Coinbase) or <a href="https://robinhood.com/wallet" target="_blank" rel="noopener">Robinhood Wallet</a>. Bithood never stores your keys.</p>
+        <p class="signin-note">Don't have a wallet? Get <a href="https://phantom.app" target="_blank" rel="noopener">Phantom</a> for Solana or <a href="https://metamask.io" target="_blank" rel="noopener">MetaMask</a> for EVM. Bithood never stores your keys.</p>
       </div>
     </div>
   </div>
@@ -1995,66 +1995,8 @@ function closeNav() {
 
   /* ── Wallet logo map ── */
   const WALLET_LOGOS = {
-    phantom: `<svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="128" height="128" rx="26" fill="url(#ph)"/>
-<defs><linearGradient id="ph" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
-<stop stop-color="#534BB1"/><stop offset="1" stop-color="#551BF9"/></linearGradient></defs>
-<ellipse cx="64" cy="57" rx="29" ry="27" fill="white"/>
-<rect x="35" y="57" width="58" height="28" fill="white"/>
-<path d="M35 85 Q42 99 49 85" fill="white"/>
-<path d="M49 85 Q56 99 63 85" fill="white"/>
-<path d="M63 85 Q70 99 77 85" fill="white"/>
-<path d="M77 85 Q84 99 93 85" fill="white"/>
-<ellipse cx="52" cy="54" rx="5" ry="6" fill="url(#ph)"/>
-<ellipse cx="76" cy="54" rx="5" ry="6" fill="url(#ph)"/>
-<ellipse cx="54" cy="52" rx="2" ry="2.5" fill="white"/>
-<ellipse cx="78" cy="52" rx="2" ry="2.5" fill="white"/>
-</svg>`,
-    backpack: `<svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="128" height="128" rx="26" fill="#E33B3B"/>
-<rect x="46" y="26" width="36" height="8" rx="4" fill="white" opacity="0.9"/>
-<rect x="54" y="30" width="20" height="12" rx="3" fill="white" opacity="0.9"/>
-<rect x="30" y="42" width="68" height="64" rx="14" fill="white" opacity="0.95"/>
-<rect x="52" y="42" width="24" height="10" rx="5" fill="#E33B3B"/>
-<rect x="30" y="68" width="68" height="6" rx="3" fill="#E33B3B" opacity="0.25"/>
-<rect x="56" y="74" width="16" height="14" rx="4" fill="#E33B3B" opacity="0.35"/>
-</svg>`,
-    solflare: `<svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="128" height="128" rx="26" fill="url(#sf)"/>
-<defs><linearGradient id="sf" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FBB040"/><stop offset="1" stop-color="#F7841A"/></linearGradient></defs>
-<circle cx="64" cy="64" r="22" fill="white" opacity="0.95"/>
-<rect x="61" y="18" width="6" height="20" rx="3" fill="white"/>
-<rect x="61" y="90" width="6" height="20" rx="3" fill="white"/>
-<rect x="18" y="61" width="20" height="6" rx="3" fill="white"/>
-<rect x="90" y="61" width="20" height="6" rx="3" fill="white"/>
-<rect x="36" y="33" width="6" height="18" rx="3" fill="white" transform="rotate(-45 36 33)"/>
-<rect x="87" y="77" width="6" height="18" rx="3" fill="white" transform="rotate(-45 87 77)"/>
-<rect x="33" y="87" width="6" height="18" rx="3" fill="white" transform="rotate(45 33 87)"/>
-<rect x="84" y="36" width="6" height="18" rx="3" fill="white" transform="rotate(45 84 36)"/>
-</svg>`,
-    metamask: `<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIGlkPSJMYXllcl8xIiB4PSIwIiB5PSIwIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzMTguNiAzMTguNiI+CiAgPHN0eWxlPgogICAgLnN0MSwuc3Q2e2ZpbGw6I2U0NzYxYjtzdHJva2U6I2U0NzYxYjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmR9LnN0NntmaWxsOiNmNjg1MWI7c3Ryb2tlOiNmNjg1MWJ9CiAgPC9zdHlsZT4KICA8cGF0aCBmaWxsPSIjZTI3NjFiIiBzdHJva2U9IiNlMjc2MWIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0ibTI3NC4xIDM1LjUtOTkuNSA3My45TDE5MyA2NS44eiIvPgogIDxwYXRoIGQ9Im00NC40IDM1LjUgOTguNyA3NC42LTE3LjUtNDQuM3ptMTkzLjkgMTcxLjMtMjYuNSA0MC42IDU2LjcgMTUuNiAxNi4zLTU1LjN6bS0yMDQuNC45TDUwLjEgMjYzbDU2LjctMTUuNi0yNi41LTQwLjZ6IiBjbGFzcz0ic3QxIi8+CiAgPHBhdGggZD0ibTEwMy42IDEzOC4yLTE1LjggMjMuOSA1Ni4zIDIuNS0yLTYwLjV6bTExMS4zIDAtMzktMzQuOC0xLjMgNjEuMiA1Ni4yLTIuNXpNMTA2LjggMjQ3LjRsMzMuOC0xNi41LTI5LjItMjIuOHptNzEuMS0xNi41IDMzLjkgMTYuNS00LjctMzkuM3oiIGNsYXNzPSJzdDEiLz4KICA8cGF0aCBmaWxsPSIjZDdjMWIzIiBzdHJva2U9IiNkN2MxYjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0ibTIxMS44IDI0Ny40LTMzLjktMTYuNSAyLjcgMjIuMS0uMyA5LjN6bS0xMDUgMCAzMS41IDE0LjktLjItOS4zIDIuNS0yMi4xeiIvPgogIDxwYXRoIGZpbGw9IiMyMzM0NDciIHN0cm9rZT0iIzIzMzQ0NyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTM4LjggMTkzLjUtMjguMi04LjMgMTkuOS05LjF6bTQwLjkgMCA4LjMtMTcuNCAyMCA5LjF6Ii8+CiAgPHBhdGggZmlsbD0iI2NkNjExNiIgc3Ryb2tlPSIjY2Q2MTE2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Im0xMDYuOCAyNDcuNCA0LjgtNDAuNi0zMS4zLjl6TTIwNyAyMDYuOGw0LjggNDAuNiAyNi41LTM5Ljd6bTIzLjgtNDQuNy01Ni4yIDIuNSA1LjIgMjguOSA4LjMtMTcuNCAyMCA5LjF6bS0xMjAuMiAyMy4xIDIwLTkuMSA4LjIgMTcuNCA1LjMtMjguOS01Ni4zLTIuNXoiLz4KICA8cGF0aCBmaWxsPSIjZTQ3NTFmIiBzdHJva2U9IiNlNDc1MWYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0ibTg3LjggMTYyLjEgMjMuNiA0Ni0uOC0yMi45em0xMjAuMyAyMy4xLTEgMjIuOSAyMy43LTQ2em0tNjQtMjAuNi01LjMgMjguOSA2LjYgMzQuMSAxLjUtNDQuOXptMzAuNSAwLTIuNyAxOCAxLjIgNDUgNi43LTM0LjF6Ii8+CiAgPHBhdGggZD0ibTE3OS44IDE5My41LTYuNyAzNC4xIDQuOCAzLjMgMjkuMi0yMi44IDEtMjIuOXptLTY5LjItOC4zLjggMjIuOSAyOS4yIDIyLjggNC44LTMuMy02LjYtMzQuMXoiIGNsYXNzPSJzdDYiLz4KICA8cGF0aCBmaWxsPSIjYzBhZDllIiBzdHJva2U9IiNjMGFkOWUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0ibTE4MC4zIDI2Mi4zLjMtOS4zLTIuNS0yLjJoLTM3LjdsLTIuMyAyLjIuMiA5LjMtMzEuNS0xNC45IDExIDkgMjIuMyAxNS41aDM4LjNsMjIuNC0xNS41IDExLTl6Ii8+CiAgPHBhdGggZmlsbD0iIzE2MTYxNiIgc3Ryb2tlPSIjMTYxNjE2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Im0xNzcuOSAyMzAuOS00LjgtMy4zaC0yNy43bC00LjggMy4zLTIuNSAyMi4xIDIuMy0yLjJoMzcuN2wyLjUgMi4yeiIvPgogIDxwYXRoIGZpbGw9IiM3NjNkMTYiIHN0cm9rZT0iIzc2M2QxNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMjc4LjMgMTE0LjIgOC41LTQwLjgtMTIuNy0zNy45LTk2LjIgNzEuNCAzNyAzMS4zIDUyLjMgMTUuMyAxMS42LTEzLjUtNS0zLjYgOC03LjMtNi4yLTQuOCA4LTYuMXpNMzEuOCA3My40bDguNSA0MC44LTUuNCA0IDggNi4xLTYuMSA0LjggOCA3LjMtNSAzLjYgMTEuNSAxMy41IDUyLjMtMTUuMyAzNy0zMS4zLTk2LjItNzEuNHoiLz4KICA8cGF0aCBkPSJtMjY3LjIgMTUzLjUtNTIuMy0xNS4zIDE1LjkgMjMuOS0yMy43IDQ2IDMxLjItLjRoNDYuNXptLTE2My42LTE1LjMtNTIuMyAxNS4zLTE3LjQgNTQuMmg0Ni40bDMxLjEuNC0yMy42LTQ2em03MSAyNi40IDMuMy01Ny43IDE1LjItNDEuMWgtNjcuNWwxNSA0MS4xIDMuNSA1Ny43IDEuMiAxOC4yLjEgNDQuOGgyNy43bC4yLTQ0Ljh6IiBjbGFzcz0ic3Q2Ii8+Cjwvc3ZnPg==" style="width:36px;height:36px;border-radius:8px;background:#fff;padding:2px;" alt="MetaMask"/>`,
-    robinhood: `<svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="128" height="128" rx="26" fill="#00C805"/>
-<path d="M50 26h28c6 0 18 4 18 18 0 10-7 16-14 18l16 40H80L66 64H58v38H44V26h6z" fill="white"/>
-<rect x="44" y="26" width="14" height="14" fill="white"/>
-<rect x="44" y="26" width="28" height="14" rx="7" fill="white"/>
-<rect x="44" y="40" width="14" height="22" fill="white"/>
-<rect x="44" y="54" width="22" height="14" rx="7" fill="white"/>
-<path d="M62 64l16 38h-16l-4-14" fill="white"/>
-</svg>`,
-    okx: `<svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="128" height="128" rx="26" fill="#0a0a0a"/>
-<rect x="18" y="47" width="92" height="11" rx="5.5" fill="white"/>
-<rect x="18" y="70" width="92" height="11" rx="5.5" fill="white"/>
-<rect x="30" y="35" width="11" height="58" rx="5.5" fill="white"/>
-<rect x="87" y="35" width="11" height="58" rx="5.5" fill="white"/>
-</svg>`,
-    coinbase: `<svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="128" height="128" rx="26" fill="#1652F0"/>
-<circle cx="64" cy="64" r="38" fill="white"/>
-<path d="M64 32c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm0 54c-12.1 0-22-9.9-22-22s9.9-22 22-22c8.6 0 16 4.9 19.8 12.2H72.5C70.1 50.6 67.2 49 64 49c-8.3 0-15 6.7-15 15s6.7 15 15 15c3.2 0 6.1-1.6 8.5-3.2h11.3C80 83.1 72.6 86 64 86z" fill="#1652F0"/>
-</svg>`,
+    phantom:  '<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgZmlsbD0ibm9uZSI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTA1IiBmaWxsPSJ1cmwoI3BoYmcpIi8+CjxkZWZzPgogIDxsaW5lYXJHcmFkaWVudCBpZD0icGhiZyIgeDE9IjAiIHkxPSIwIiB4Mj0iNTEyIiB5Mj0iNTEyIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICA8c3RvcCBzdG9wLWNvbG9yPSIjNTM0QkIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM1NTFCRjkiLz4KICA8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjxwYXRoIGQ9Ik05IDQwMi4zMTNDOSA0NTguMTQ2IDM3LjcxMjMgNDcxIDY3LjU3MzEgNDcxQzEzMC43NCA0NzEgMTc4LjIxMSA0MTMuNTYgMjA2LjU0MSAzNjguMTcxQzIwMy4wOTUgMzc4LjIxMiAyMDEuMTgxIDM4OC4yNTQgMjAxLjE4MSAzOTcuODk1QzIwMS4xODEgNDI0LjQwNSAyMTUuNzI5IDQ0My4yODQgMjQ0LjQ0MSA0NDMuMjg0QzI4My44NzIgNDQzLjI4NCAzMjUuOTg0IDQwNy4xMzMgMzQ3LjgwNSAzNjguMTcxQzM0Ni4yNzQgMzczLjc5NCAzNDUuNTA4IDM3OS4wMTYgMzQ1LjUwOCAzODMuODM2QzM0NS41MDggNDAyLjMxMyAzNTUuNDYyIDQxMy45NjIgMzc1Ljc1MiA0MTMuOTYyQzQzOS42ODQgNDEzLjk2MiA1MDQgMjk1LjQ2NyA1MDQgMTkxLjgzNEM1MDQgMTExLjA5NyA0NjQuOTUxIDQwIDM2Ni45NDcgNDBDMTk0LjY3MyA0MCA5IDI2MC4xMTkgOSA0MDIuMzEzWk0zMDcuNjA4IDE4Mi45OTdDMzA3LjYwOCAxNjIuOTEzIDMxOC4zMjcgMTQ4Ljg1NSAzMzQuMDIzIDE0OC44NTVDMzQ5LjMzNiAxNDguODU1IDM2MC4wNTYgMTYyLjkxMyAzNjAuMDU2IDE4Mi45OTdDMzYwLjA1NiAyMDMuMDgxIDM0OS4zMzYgMjE3LjU0MSAzMzQuMDIzIDIxNy41NDFDMzE4LjMyNyAyMTcuNTQxIDMwNy42MDggMjAzLjA4MSAzMDcuNjA4IDE4Mi45OTdaTTM4OS41MzQgMTgyLjk5N0MzODkuNTM0IDE2Mi45MTMgNDAwLjI1MyAxNDguODU1IDQxNS45NDkgMTQ4Ljg1NUM0MzEuMjYyIDE0OC44NTUgNDQxLjk4MSAxNjIuOTEzIDQ0MS45ODEgMTgyLjk5N0M0NDEuOTgxIDIwMy4wODEgNDMxLjI2MiAyMTcuNTQxIDQxNS45NDkgMjE3LjU0MUM0MDAuMjUzIDIxNy41NDEgMzg5LjUzNCAyMDMuMDgxIDM4OS41MzQgMTgyLjk5N1oiIGZpbGw9IiNBQjlGRjIiLz4KPC9zdmc+" style="width:36px;height:36px;border-radius:8px;" alt="Phantom"/>',
+    metamask: '<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIGlkPSJMYXllcl8xIiB4PSIwIiB5PSIwIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzMTguNiAzMTguNiI+CiAgPHN0eWxlPgogICAgLnN0MSwuc3Q2e2ZpbGw6I2U0NzYxYjtzdHJva2U6I2U0NzYxYjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmR9LnN0NntmaWxsOiNmNjg1MWI7c3Ryb2tlOiNmNjg1MWJ9CiAgPC9zdHlsZT4KICA8cGF0aCBmaWxsPSIjZTI3NjFiIiBzdHJva2U9IiNlMjc2MWIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0ibTI3NC4xIDM1LjUtOTkuNSA3My45TDE5MyA2NS44eiIvPgogIDxwYXRoIGQ9Im00NC40IDM1LjUgOTguNyA3NC42LTE3LjUtNDQuM3ptMTkzLjkgMTcxLjMtMjYuNSA0MC42IDU2LjcgMTUuNiAxNi4zLTU1LjN6bS0yMDQuNC45TDUwLjEgMjYzbDU2LjctMTUuNi0yNi41LTQwLjZ6IiBjbGFzcz0ic3QxIi8+CiAgPHBhdGggZD0ibTEwMy42IDEzOC4yLTE1LjggMjMuOSA1Ni4zIDIuNS0yLTYwLjV6bTExMS4zIDAtMzktMzQuOC0xLjMgNjEuMiA1Ni4yLTIuNXpNMTA2LjggMjQ3LjRsMzMuOC0xNi41LTI5LjItMjIuOHptNzEuMS0xNi41IDMzLjkgMTYuNS00LjctMzkuM3oiIGNsYXNzPSJzdDEiLz4KICA8cGF0aCBmaWxsPSIjZDdjMWIzIiBzdHJva2U9IiNkN2MxYjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0ibTIxMS44IDI0Ny40LTMzLjktMTYuNSAyLjcgMjIuMS0uMyA5LjN6bS0xMDUgMCAzMS41IDE0LjktLjItOS4zIDIuNS0yMi4xeiIvPgogIDxwYXRoIGZpbGw9IiMyMzM0NDciIHN0cm9rZT0iIzIzMzQ0NyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTM4LjggMTkzLjUtMjguMi04LjMgMTkuOS05LjF6bTQwLjkgMCA4LjMtMTcuNCAyMCA5LjF6Ii8+CiAgPHBhdGggZmlsbD0iI2NkNjExNiIgc3Ryb2tlPSIjY2Q2MTE2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Im0xMDYuOCAyNDcuNCA0LjgtNDAuNi0zMS4zLjl6TTIwNyAyMDYuOGw0LjggNDAuNiAyNi41LTM5Ljd6bTIzLjgtNDQuNy01Ni4yIDIuNSA1LjIgMjguOSA4LjMtMTcuNCAyMCA5LjF6bS0xMjAuMiAyMy4xIDIwLTkuMSA4LjIgMTcuNCA1LjMtMjguOS01Ni4zLTIuNXoiLz4KICA8cGF0aCBmaWxsPSIjZTQ3NTFmIiBzdHJva2U9IiNlNDc1MWYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0ibTg3LjggMTYyLjEgMjMuNiA0Ni0uOC0yMi45em0xMjAuMyAyMy4xLTEgMjIuOSAyMy43LTQ2em0tNjQtMjAuNi01LjMgMjguOSA2LjYgMzQuMSAxLjUtNDQuOXptMzAuNSAwLTIuNyAxOCAxLjIgNDUgNi43LTM0LjF6Ii8+CiAgPHBhdGggZD0ibTE3OS44IDE5My41LTYuNyAzNC4xIDQuOCAzLjMgMjkuMi0yMi44IDEtMjIuOXptLTY5LjItOC4zLjggMjIuOSAyOS4yIDIyLjggNC44LTMuMy02LjYtMzQuMXoiIGNsYXNzPSJzdDYiLz4KICA8cGF0aCBmaWxsPSIjYzBhZDllIiBzdHJva2U9IiNjMGFkOWUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0ibTE4MC4zIDI2Mi4zLjMtOS4zLTIuNS0yLjJoLTM3LjdsLTIuMyAyLjIuMiA5LjMtMzEuNS0xNC45IDExIDkgMjIuMyAxNS41aDM4LjNsMjIuNC0xNS41IDExLTl6Ii8+CiAgPHBhdGggZmlsbD0iIzE2MTYxNiIgc3Ryb2tlPSIjMTYxNjE2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Im0xNzcuOSAyMzAuOS00LjgtMy4zaC0yNy43bC00LjggMy4zLTIuNSAyMi4xIDIuMy0yLjJoMzcuN2wyLjUgMi4yeiIvPgogIDxwYXRoIGZpbGw9IiM3NjNkMTYiIHN0cm9rZT0iIzc2M2QxNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMjc4LjMgMTE0LjIgOC41LTQwLjgtMTIuNy0zNy45LTk2LjIgNzEuNCAzNyAzMS4zIDUyLjMgMTUuMyAxMS42LTEzLjUtNS0zLjYgOC03LjMtNi4yLTQuOCA4LTYuMXpNMzEuOCA3My40bDguNSA0MC44LTUuNCA0IDggNi4xLTYuMSA0LjggOCA3LjMtNSAzLjYgMTEuNSAxMy41IDUyLjMtMTUuMyAzNy0zMS4zLTk2LjItNzEuNHoiLz4KICA8cGF0aCBkPSJtMjY3LjIgMTUzLjUtNTIuMy0xNS4zIDE1LjkgMjMuOS0yMy43IDQ2IDMxLjItLjRoNDYuNXptLTE2My42LTE1LjMtNTIuMyAxNS4zLTE3LjQgNTQuMmg0Ni40bDMxLjEuNC0yMy42LTQ2em03MSAyNi40IDMuMy01Ny43IDE1LjItNDEuMWgtNjcuNWwxNSA0MS4xIDMuNSA1Ny43IDEuMiAxOC4yLjEgNDQuOGgyNy43bC4yLTQ0Ljh6IiBjbGFzcz0ic3Q2Ii8+Cjwvc3ZnPg==" style="width:36px;height:36px;border-radius:8px;background:#fff;padding:1px;" alt="MetaMask"/>',
   };
 
   /* ── Wallet definitions ── */
@@ -2073,30 +2015,6 @@ function closeNav() {
       install: 'https://phantom.app',
     },
     {
-      id: 'backpack',
-      name: 'Backpack',
-      chains: 'Solana · EVM · More',
-      logo: 'backpack',
-      detect: () => window.backpack,
-      connect: async () => {
-        await window.backpack.connect();
-        return window.backpack.publicKey.toString();
-      },
-      install: 'https://www.backpack.app',
-    },
-    {
-      id: 'solflare',
-      name: 'Solflare',
-      chains: 'Solana',
-      logo: 'solflare',
-      detect: () => window.solflare?.isSolflare ? window.solflare : null,
-      connect: async () => {
-        await window.solflare.connect();
-        return window.solflare.publicKey.toString();
-      },
-      install: 'https://solflare.com',
-    },
-    {
       id: 'metamask',
       name: 'MetaMask',
       chains: 'EVM · Solana',
@@ -2105,6 +2023,10 @@ function closeNav() {
       connect: async () => {
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         return accounts[0];
+      },
+      install: 'https://metamask.io',
+    },
+  ];
       },
       install: 'https://metamask.io',
     },
